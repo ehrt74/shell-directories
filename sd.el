@@ -1,5 +1,4 @@
 ;; -*- lexical-binding: t; -*-
-(setq lexical-binding t)
 
 (defun sd--alist-with (al key val)
   (named-let foo ((al al) (ret '()) (found nil))
@@ -18,7 +17,6 @@
 	(reverse ret)
       (cl-destructuring-bind (a1 a2 . r) vals
 	(foo r (cons (cons a1 a2) ret))))))
-
 
 (defgroup bashmarks nil "agordoj por bashmarks")
 
