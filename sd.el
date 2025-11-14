@@ -53,6 +53,7 @@
       (insert (json-serialize db)))))
 
 (defun eshell/sdd (i)
+  "forigas dosierujon al la i.a loko"
   (let* ((db (sd--get-db))
 	 (paths (alist-get 'Paths db [])))
     (when (< i (length paths))
@@ -60,6 +61,7 @@
     (sd--save-db (sd--alist-with db 'Paths paths))))
 
 (defun eshell/sda ()
+  "aldonas la nunan dosierujon al la unua libra loko"
   (let* ((wd (eshell/pwd))
 	 (db (sd--get-db))
 	 (paths (alist-get 'Paths db []))
@@ -72,11 +74,13 @@
     (sd--save-db (sd--alist-with db 'Paths new-paths))))
 
 (defun eshell/sdg (i)
+  "navigas al la dosierujo al la i.a loko"
   (let ((paths (alist-get 'Paths (sd--get-db) [])))
     (when (> (length paths) i)
-      (sd (elt paths i)))))
+      (cd (elt paths i)))))
 
 (defun eshell/sdl ()
+  "eldonas la dosierujo-liston"
   (let* ((db (sd--get-db))
 	 (paths (alist-get 'Paths db []))
 	 (index (alist-get 'CurrentIndex db -1)))
